@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 320px;
+  --breakpoint-am: 350px;
+  --breakpoint-mm: 375px;
+  --breakpoint-mt: 768px;
+  --breakpoint-md: 1440px;
+
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+  --color-none: none;
+  --color-black: #000;
+  --color-mine-shaft: #3d3d3d;
+  --color-white: #FFF;
+  --color-grey: #D9D9D9;
+  --color-alabaster: #F8F8F8;
+  --color-wild-sand: #f4f4f4;
+  --color-silver-chalice: #A5A5A5;
+  --color-dove-gray: #727272;
+  --color-mercury: #EAEAEA;
+  --color-green: #46A358;
+
+  --font-cera-pro: 'ceraPro', 'ceraPro Fallback';
+
+   --theme-container-padding-x-mt: 3rem;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant md {
+    padding-inline: 7.5rem;
+  }
+}
+
+@utility skeleton {
+  @apply bg-wild-sand animate-pulse;
+}
+
+@layer base {
+  :root {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1.5rem;
+    font-family: var(--font-cera-pro);
+    text-rendering: optimizelegibility;
+    text-size-adjust: 100%;
+    text-transform: none;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  *:focus {
+    outline-color: #000;
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto",
+    "ignore": [
+      "**/node_modules",
+      "**/npm-debug.log",
+      "**/.npm",
+      "**/.next",
+      "**/build",
+      "public/static/documents",
+      "**/.vercel",
+      "**/.turbo",
+      "**/cache",
+      "**/.eslintjscache",
+      "**/.eslintmdcache",
+      "**/.stylelintcache",
+      "**/.prettiercache",
+      "**/tsconfig.tsbuildinfo",
+      "**/CODEOWNERS",
+      "scripts/release-post/template.hbs"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "warn"
+      },
+      "style": {
+        "useBlockStatements": "off",
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "shorthand"
+          }
+        },
+        "useImportType": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "warn"
+      },
+      "nursery": {}
+    },
+    "ignore": [
+      "**/node_modules",
+      "**/.next",
+      "**/.turbo",
+      "**/.swc",
+      "**/build"
+      // "**/*.config.js"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto"
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  }
+}

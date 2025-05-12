@@ -1,0 +1,42 @@
+import { ProductCardSkeleton } from '@/entities/Product/ui/ProductCardSkeleton';
+import { CatalogTabs } from './CatalogTabs';
+import dynamic from 'next/dynamic';
+import { SortByDrawer } from './SortByDrawer';
+import { FilterContent } from '../../FilterContent';
+import { SortBySelector } from './SortBySelector';
+
+type CatalogProps = {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+};
+
+const DynamicCatalogProducts = dynamic(
+  () => import('./CatalogServerProducts'),
+  {
+    loading: () => <ProductCardSkeleton />,
+  },
+);
+
+export const Catalog = ({ searchParams }: CatalogProps) => {
+  return (
+    <section>
+      <div className="container">
+        <div className="flex justify-between mt-5 gap-12">
+          <div className="bg-alabaster hidden md:block rounded-t-[20px] pl-[1.125rem] pr-6 max-w-[310px] mt-2 min-h-screen pt-3.5">
+            <div className="sticky top-7">
+              {/* FIXME: text */}
+              <FilterContent />
+            </div>
+          </div>
+          <div className="grow">
+            <div className="flex items-center justify-between">
+              <CatalogTabs />
+              <SortByDrawer />
+              <SortBySelector />
+            </div>
+            <DynamicCatalogProducts searchParams={searchParams} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
