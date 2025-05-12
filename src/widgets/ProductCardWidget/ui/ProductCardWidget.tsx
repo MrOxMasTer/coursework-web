@@ -1,4 +1,4 @@
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { ProductCard } from '@/entities/Product/ui/ProductCard';
 import { ButtonLike } from '@/features/toggleLike/ui/ButtonLike';
 import { pageConfig } from '@/shared/configs/page';

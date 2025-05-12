@@ -1,4 +1,4 @@
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { CartCardWidget } from '@/widgets/CartCardWidget/ui/CartCardWidget';
 
 type CartListProps = {

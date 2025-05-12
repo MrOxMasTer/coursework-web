@@ -2,7 +2,7 @@
 
 import Heart from '#/public/svg/Heart.svg';
 import HeartFill from '#/public/svg/Heart_fill.svg';
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { cn } from '@/shared/lib/utils/classes';
 import { useState, type ComponentProps } from 'react';
 

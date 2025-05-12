@@ -1,4 +1,4 @@
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 
 const pages = {
   base: '/',
@@ -7,10 +7,6 @@ const pages = {
   profile: '/profile',
   favorites: '/profile/favorites',
   cart: '/profile/cart',
-
-  // auth
-  login: '/login',
-  register: '/register',
 
   //products
   product: (id: Product['id']) => `/products/${id}`,

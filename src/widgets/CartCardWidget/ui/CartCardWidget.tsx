@@ -1,7 +1,7 @@
 'use client';
 
 import { CartCard } from '@/entities/Cart/ui/CartCard';
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { sizes } from '@/entities/Product/model/sizes';
 import { useCounter } from '@/features/counterToCart/api/useCounter';
 import { CounterToCart } from '@/features/counterToCart/ui/CounterToCart';

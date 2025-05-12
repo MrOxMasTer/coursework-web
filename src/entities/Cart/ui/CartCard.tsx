@@ -1,10 +1,10 @@
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import type { Size } from '@/entities/Product/model/sizes';
 import { Typography } from '@/shared/ui/Typography';
 
 type CartCard = {
   product: Product;
-  size: Size['value'];
+  size: Size;
   children?: React.ReactNode;
 };
 

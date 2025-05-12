@@ -1,4 +1,4 @@
-import type { Product } from '../model/schemes';
+import type { Product } from '../model/types';
 import { Typography } from '@/shared/ui/Typography';
 
 type ProductCardProps = {

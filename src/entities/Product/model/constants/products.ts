@@ -1,0 +1,114 @@
+import type { Product } from '../types';
+
+const products: Product[] = [
+  {
+    id: 1,
+    name: 'Barberton Daisy',
+    price: 119,
+    imageUrl: '586c85231ab58d21463d86aa3768f5c6c78f8a1f.png',
+    rating: 4.5,
+    ratingCount: 87,
+    category: 'terrariums',
+    description:
+      'Brighten your space with the cheerful Barberton Daisy. Ideal for terrariums and indoor shelves. Easy to maintain year-round.',
+    sizes: ['XS', 'S', 'M', 'L'],
+  },
+  {
+    id: 2,
+    name: 'Angel Wing Begonia',
+    price: 169,
+    imageUrl: '4826f3a41a2148d881d8376b26471cced915b1bb.png',
+    rating: 4.8,
+    ratingCount: 120,
+    category: 'house',
+    description:
+      'Elegant foliage with spotted angel-like wings. Thrives in bright indirect light. Adds a lush tropical touch.',
+    sizes: ['S', 'M', 'L', 'XL'],
+  },
+  {
+    id: 3,
+    name: 'African Violet',
+    price: 229,
+    discount: 13,
+    discountedPrice: 199,
+    imageUrl: '7c597aa91ee5df5d1fd65246c0c9918f920.png',
+    rating: 4.2,
+    ratingCount: 64,
+    category: 'house',
+    description:
+      'A popular blooming houseplant with velvety leaves. Compact and charming. Perfect for desks and windowsills.',
+    sizes: ['XS', 'S', 'M'],
+  },
+  {
+    id: 4,
+    name: 'Beach Spider Lily',
+    price: 129,
+    imageUrl: '4575e3df52fa214db1f3ce5192778060c13b11e21.png',
+    rating: 4.6,
+    ratingCount: 99,
+    category: 'house',
+    description:
+      'Graceful green leaves and striking white flowers. Great for beach-themed interiors. Loves moist soil.',
+    sizes: ['S', 'M', 'L', 'XL'],
+  },
+  {
+    id: 5,
+    name: 'Blushing Bromeliad',
+    price: 139,
+    imageUrl: '9531c63d3f618aefd1ccb10a5aa0e2d00f45d0b.png',
+    rating: 4.7,
+    ratingCount: 73,
+    category: 'house',
+    description:
+      'Stylish and modern, this plant features blushing tones. Requires low effort. Great for indoor décor.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+  },
+  {
+    id: 6,
+    name: 'Aluminum Plant',
+    price: 179,
+    imageUrl: '744c96dba60207fabc5a7d29f8801ecf6b4e2aed.png',
+    rating: 4.3,
+    ratingCount: 58,
+    category: 'succulents',
+    description:
+      'A bold and sculptural succulent with a silver sheen. Perfect for minimal interiors. Very low maintenance.',
+    sizes: ['XS', 'S', 'M'],
+  },
+  {
+    id: 7,
+    name: "Bird's Nest Fern",
+    price: 99,
+    imageUrl: '9957e153a59c050946e77e8fc7e11525e87c4678.png',
+    rating: 4.4,
+    ratingCount: 65,
+    category: 'potter',
+    description:
+      'Curly green fronds emerge from a nest-like base. Ideal for shaded rooms. Helps purify the air.',
+    sizes: ['S', 'M', 'L'],
+  },
+  {
+    id: 8,
+    name: 'Broadleaf Lady Palm',
+    price: 59,
+    imageUrl: '78e9e6c190effae17498640571679183299f774e.png',
+    rating: 4.1,
+    ratingCount: 42,
+    category: 'terrariums',
+    description:
+      'Compact palm variety suitable for terrariums. Adds vibrant green texture. Thrives in low light.',
+    sizes: ['XS', 'S', 'M', 'L'],
+  },
+  {
+    id: 9,
+    name: 'Chinese Evergreen',
+    price: 39,
+    imageUrl: '5219e659b8a1d488abd136ce27f86ab3da3ceb37.png',
+    rating: 4.5,
+    ratingCount: 53,
+    category: 'small',
+    description:
+      'A hardy plant with attractive foliage. Perfect for beginners. Handles low light and humidity well.',
+    sizes: ['XS', 'S', 'M'],
+  },
+];

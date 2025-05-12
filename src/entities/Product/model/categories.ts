@@ -38,3 +38,5 @@ export const categories = [
 ] as const;
 
 export const literalCategories = categories.map((c) => c.value);
+
+export type Category = (typeof literalCategories)[number];

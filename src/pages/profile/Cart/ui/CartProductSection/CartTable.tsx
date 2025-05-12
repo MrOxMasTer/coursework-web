@@ -1,6 +1,6 @@
 'use client';
 
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { sizes } from '@/entities/Product/model/sizes';
 import {
   Table,

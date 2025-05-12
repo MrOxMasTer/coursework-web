@@ -2,7 +2,7 @@ import {
   productService,
   type CatalogProductsOptions,
 } from '@/entities/Product/api/productService';
-import type { Product } from '@/entities/Product/model/schemes';
+import type { Product } from '@/entities/Product/model/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 export const useCatalogProducts = (

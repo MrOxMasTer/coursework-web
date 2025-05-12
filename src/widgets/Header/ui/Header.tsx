@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Cart } from './Cart';
 import { pageConfig } from '@/shared/configs/page';
 import { Search } from '@/features/search/ui/Search';
-import { Person } from './Person';
+import { Heart } from 'lucide-react';
 
 export const Header = () => {
   return (
@@ -16,7 +16,9 @@ export const Header = () => {
           <Search />
           <div className="flex items-baseline gap-4">
             <Cart />
-            <Person />
+            <Link href={pageConfig.favorites}>
+              <Heart className="size-[23px]" color="#3d3d3d" />
+            </Link>
           </div>
         </div>
       </div>

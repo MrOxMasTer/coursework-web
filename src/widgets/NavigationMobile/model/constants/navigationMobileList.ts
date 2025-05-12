@@ -2,7 +2,6 @@ import { pageConfig, type PagePaths } from '@/shared/configs/page';
 import Home from '#/public/svg/Home.svg';
 import Favorites from '#/public/svg/Favorites.svg';
 import Cart from '#/public/svg/CartMobile.svg';
-import User from '#/public/svg/User.svg';
 import type { JSX } from 'react';
 
 type NavigationMobileItem = {
@@ -23,14 +22,8 @@ export const navigationMobileList: NavigationMobileItem[] = [
     Component: Favorites,
   },
   {
-    // TODO: fetch
     label: 'Cart',
     page: pageConfig.cart,
     Component: Cart,
-  },
-  {
-    label: 'Profile',
-    Component: User,
-    page: pageConfig.login,
   },
 ];

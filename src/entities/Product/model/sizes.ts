@@ -1,11 +1,11 @@
 // FIXME: typing -> as const
 
-export type Size = {
-  value: string;
-  label: string;
-};
+// export type Size = {
+//   value: string;
+//   label: string;
+// };
 
-export const sizes: Size[] = [
+export const sizes = [
   {
     value: 'XS',
     label: 'x-small',
@@ -29,3 +29,5 @@ export const sizes: Size[] = [
 ] as const;
 
 export const literalSizes = sizes.map((s) => s.value);
+
+export type Size = (typeof literalSizes)[number];
