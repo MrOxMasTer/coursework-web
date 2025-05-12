@@ -1,22 +1,13 @@
-import { ProductCardSkeleton } from '@/entities/Product/ui/ProductCardSkeleton';
 import { CatalogTabs } from './CatalogTabs';
-import dynamic from 'next/dynamic';
 import { SortByDrawer } from './SortByDrawer';
 import { FilterContent } from '../../FilterContent';
 import { SortBySelector } from './SortBySelector';
+import { CatalogProducts } from './CatalogProducts';
+import { products } from '@/entities/Product/model/constants/products';
 
-type CatalogProps = {
-  searchParams: Promise<{ [key: string]: string | undefined }>;
-};
+type CatalogProps = {};
 
-const DynamicCatalogProducts = dynamic(
-  () => import('./CatalogServerProducts'),
-  {
-    loading: () => <ProductCardSkeleton />,
-  },
-);
-
-export const Catalog = ({ searchParams }: CatalogProps) => {
+export const Catalog = () => {
   return (
     <section>
       <div className="container">
@@ -33,7 +24,7 @@ export const Catalog = ({ searchParams }: CatalogProps) => {
               <SortByDrawer />
               <SortBySelector />
             </div>
-            <DynamicCatalogProducts searchParams={searchParams} />
+            <CatalogProducts initialData={products} />
           </div>
         </div>
       </div>

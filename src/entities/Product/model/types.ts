@@ -11,6 +11,7 @@ export type Product = {
   category: Category;
   description: string;
   sizes: Size[];
+  createdAt: Date;
   discount?: number;
   discountedPrice?: number;
 };

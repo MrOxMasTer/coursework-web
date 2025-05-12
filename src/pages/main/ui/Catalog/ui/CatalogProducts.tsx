@@ -7,23 +7,19 @@ import {
   parseAsStringLiteral,
   parseAsInteger,
 } from 'nuqs';
-import { useCatalogProducts } from '../api/useCatalogProducts';
-import { useInView } from 'react-intersection-observer';
 import { literalTabs } from '../model/tabs';
 import { useMediaQuery } from '@/shared/hooks/useMediaQuery';
 import { ProductCardWidget } from '@/widgets/ProductCardWidget/ui/ProductCardWidget';
 import { literalSortBy } from '../model/sortBy';
 import { literalCategories } from '@/entities/Product/model/categories';
 import { literalSizes } from '@/entities/Product/model/sizes';
+import { useCatalogProducts } from '../api/useCatalogProducts';
 
 type CatalogProductsProps = {
   initialData: Product[];
 };
 
 const mediaQuery = '(width < 768px)';
-const intersectionThreshold = 0.1;
-const intersectionDelay = 100;
-const intersectionRootMargin = '350px 0px';
 
 const pageSizeOfMobile = 8;
 const pageSizeOfTabletAndDesktop = 9;
@@ -46,38 +42,17 @@ export const CatalogProducts = ({ initialData }: CatalogProductsProps) => {
     end: parseAsInteger,
   });
 
-  // const deferredQuery = useDeferredValue(options.q);
-
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
-    useCatalogProducts(finalProducts, {
-      ...options,
-      pageSize,
-      // q: deferredQuery,
-    });
-
-  // FIXME: tabs:
-  const [ref] = useInView({
-    onChange: (inView) => {
-      if (inView && hasNextPage && !isFetchingNextPage) fetchNextPage();
-    },
-
-    threshold: intersectionThreshold,
-    triggerOnce: false,
-    trackVisibility: true,
-    delay: intersectionDelay,
-    rootMargin: intersectionRootMargin,
-  });
+  const products = useCatalogProducts(finalProducts, options);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 md:pb-5">
       <ul className="grid grid-cols-2 gap-x-4 gap-y-4 mt:grid-cols-3">
-        {data.pages.flat().map((p, index) => (
+        {products.map((p, index) => (
           <li key={`${p.id}${index}`}>
             <ProductCardWidget product={p} />
           </li>
         ))}
       </ul>
-      {(hasNextPage || isFetchingNextPage) && <div ref={ref}>...</div>}
     </div>
   );
 };

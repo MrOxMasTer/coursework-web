@@ -1,57 +1,96 @@
-import {
-  productService,
-  type CatalogProductsOptions,
-} from '@/entities/Product/api/productService';
+import type { Size } from '@/entities/Product/model/sizes';
 import type { Product } from '@/entities/Product/model/types';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import type { literalSortBy } from '../model/sortBy';
+
+export type CatalogProductsOptions = {
+  q?: string | null;
+  tab?: string;
+  sortBy?: (typeof literalSortBy)[number] | null;
+  start?: number | null;
+  end?: number | null;
+  category?: string | null;
+  size?: string | null;
+  pageSize?: number;
+  cursor?: number;
+};
 
 export const useCatalogProducts = (
   initialData: Product[],
   options: CatalogProductsOptions,
 ) => {
-  const { tab, q, pageSize = 9, sortBy } = options;
-  const queryKey = ['catalog-products', tab, q, sortBy, pageSize] as const;
+  const [products, setProducts] = useState(initialData);
 
-  const getNextPageParam = (lastPage: Product[]) =>
-    lastPage.length > 0 ? lastPage[lastPage.length - 1].id : undefined;
+  useEffect(() => {
+    let newProducts = [...initialData];
+    const { tab, q, sortBy, category, size, start, end } = options;
 
-  const infiniteQuery = useInfiniteQuery<Product[]>({
-    queryKey,
-    initialData: () => {
-      return {
-        pages: [initialData],
-        pageParams: [undefined],
-      };
-    },
-    queryFn: async ({ pageParam, queryKey, client }) => {
-      const products = await productService.catalog({
-        ...options,
-        cursor: pageParam as Product['id'] | undefined,
+    if (category) {
+      newProducts = newProducts.filter((p) => p.category === category);
+    }
+
+    if (size) {
+      newProducts = newProducts.filter((p) => p.sizes.includes(size as Size));
+    }
+
+    if (start && end) {
+      newProducts = newProducts.filter((p) => {
+        if (p.discountedPrice) {
+          return p.discountedPrice >= start && p.discountedPrice <= end;
+        }
+
+        return p.price >= start && p.price <= end;
       });
+    }
 
-      if (products.length === 0) return products;
+    if (tab) {
+      if (tab === 'arrivals') {
+        newProducts = newProducts.sort(
+          (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
+        );
+      }
 
-      // FIXME: ???
-      // const nextCursor = products[products.length - 1].id;
+      if (tab === 'sale') {
+        newProducts = newProducts.filter(
+          (p) => p.discount && p.discountedPrice,
+        );
+      }
+    }
 
-      // client.prefetchInfiniteQuery({
-      //   initialPageParam: nextCursor,
-      //   getNextPageParam,
-      //   queryKey,
-      //   queryFn: async ({ pageParam }) => {
-      //     const products = await productService.catalog({
-      //       ...options,
-      //       cursor: pageParam,
-      //     });
-      //     return products;
-      //   },
-      // });
+    if (sortBy) {
+      if (sortBy === 'higher_rating') {
+        newProducts = newProducts.sort((a, b) => b.rating - a.rating);
+      }
 
-      return products;
-    },
-    initialPageParam: undefined,
-    getNextPageParam,
-  });
+      if (sortBy === 'popular') {
+        newProducts = newProducts.sort((a, b) => b.ratingCount - a.ratingCount);
+      }
 
-  return infiniteQuery;
+      if (sortBy === 'dearer') {
+        newProducts = newProducts.sort((a, b) => {
+          return (
+            (b.discountedPrice ?? b.price) - (a.discountedPrice ?? a.price)
+          );
+        });
+      }
+
+      if (sortBy === 'cheaper') {
+        newProducts = newProducts.sort((a, b) => {
+          return (
+            (a.discountedPrice ?? a.price) - (b.discountedPrice ?? b.price)
+          );
+        });
+      }
+    }
+
+    if (q) {
+      newProducts = newProducts.filter((p) =>
+        p.name.toLowerCase().includes(q.toLowerCase()),
+      );
+    }
+
+    setProducts(newProducts);
+  }, [initialData, options]);
+
+  return products;
 };

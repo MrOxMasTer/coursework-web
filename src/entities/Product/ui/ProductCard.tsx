@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Product } from '../model/types';
 import { Typography } from '@/shared/ui/Typography';
 
@@ -10,8 +11,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <div className="relative max-w-[175px] mm:max-w-none">
-      <div className="bg-linear-[135deg] rounded-[20px] from-0% from-wild-sand to-100% to-wild-sand min-h-[160px] mm:min-h-[200px]">
-        {/* <Image src={imageUrl} alt={name} /> */}
+      <div className="bg-linear-[135deg] rounded-[20px] from-0% from-wild-sand to-100% to-wild-sand min-h-[160px] mm:min-h-[200px] flex justify-center items-center md:min-h-[300px]">
+        <Image
+          className="object-center object-cover"
+          width={250}
+          height={250}
+          src={`/${imageUrl}`}
+          alt={name}
+        />
       </div>
       <div className="pl-[3px]">
         <Typography

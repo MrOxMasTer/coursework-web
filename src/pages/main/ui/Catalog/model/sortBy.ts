@@ -3,14 +3,7 @@ export const sortBy = [
     value: 'default',
     label: 'default',
   },
-  {
-    value: 'popular',
-    label: 'popular',
-  },
-  {
-    value: 'new',
-    label: 'new',
-  },
+
   {
     value: 'cheaper',
     label: 'cheaper',
@@ -18,6 +11,14 @@ export const sortBy = [
   {
     value: 'dearer',
     label: 'dearer',
+  },
+  {
+    value: 'popular',
+    label: 'popular',
+  },
+  {
+    value: 'higher_rating',
+    label: 'higher rating',
   },
 ] as const;
 

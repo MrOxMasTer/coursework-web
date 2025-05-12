@@ -5,7 +5,7 @@ import { Typography } from '@/shared/ui/Typography';
 import { parseAsInteger, useQueryStates } from 'nuqs';
 import { useState } from 'react';
 
-const maxMoney = 10000;
+const maxMoney = 3000;
 
 // FIXME: sync temp and real value
 export const SliderRange = () => {
