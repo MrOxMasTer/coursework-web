@@ -1,20 +1,19 @@
 'use client';
 
 import { CartCard } from '@/entities/Cart/ui/CartCard';
-import type { Product } from '@/entities/Product/model/types';
-import { sizes } from '@/entities/Product/model/sizes';
 import { useCounter } from '@/features/counterToCart/api/useCounter';
 import { CounterToCart } from '@/features/counterToCart/ui/CounterToCart';
 import Delete from '#/public/svg/Delete.svg';
+import type { CartProduct } from '@/entities/Cart/model/types';
 
 type CartCardWidgetProps = {
-  product: Product;
+  cartProduct: CartProduct;
 };
 
-export const CartCardWidget = ({ product }: CartCardWidgetProps) => {
-  // FIXME: size:
-  const size = sizes[2].value;
-  const { count, handleMinus, handlePlus } = useCounter(0);
+export const CartCardWidget = ({ cartProduct }: CartCardWidgetProps) => {
+  const { product, count, size } = cartProduct;
+
+  const { count: tempSize, handleMinus, handlePlus } = useCounter(count);
 
   return (
     <CartCard product={product} size={size}>

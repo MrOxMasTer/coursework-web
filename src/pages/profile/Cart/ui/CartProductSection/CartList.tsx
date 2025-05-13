@@ -1,16 +1,16 @@
-import type { Product } from '@/entities/Product/model/types';
+import type { CartProduct } from '@/entities/Cart/model/types';
 import { CartCardWidget } from '@/widgets/CartCardWidget/ui/CartCardWidget';
 
 type CartListProps = {
-  products: Product[];
+  cartProducts: CartProduct[];
 };
 
-export const CartList = ({ products }: CartListProps) => {
+export const CartList = ({ cartProducts }: CartListProps) => {
   return (
     <ul className="grid gap-5 mt-6 md:hidden">
-      {products.map((p) => (
-        <li key={p.id}>
-          <CartCardWidget product={p} />
+      {cartProducts.map((cp) => (
+        <li key={cp.product.id}>
+          <CartCardWidget cartProduct={cp} />
         </li>
       ))}
     </ul>

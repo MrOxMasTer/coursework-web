@@ -20,13 +20,13 @@ export const PlantSizes = ({ sizes }: PlantSizesProps) => {
     <>
       <Typography className="font-medium text-[15px]">Size:</Typography>
       <ul className="mt-3 flex gap-x-2.5 gap-y-2 flex-wrap">
-        {sizes.map(({ value }) => {
-          const isActive = size === value;
+        {sizes.map((s) => {
+          const isActive = size === s;
 
           return (
-            <li key={value}>
+            <li key={s}>
               <Chip
-                onClick={handleClick(value)}
+                onClick={handleClick(s)}
                 // @ts-ignore
                 className={[
                   'px-3 py-1 text-sm size-7',
@@ -34,7 +34,7 @@ export const PlantSizes = ({ sizes }: PlantSizesProps) => {
                 ]}
                 variant={isActive ? 'outlineActive' : 'outline'}
               >
-                {value}
+                {s}
               </Chip>
             </li>
           );

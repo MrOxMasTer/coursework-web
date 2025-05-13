@@ -1,10 +1,13 @@
-import { productService } from '@/entities/Product/api/productService';
+'use client';
+
+import { products } from '@/entities/Product/model/constants/products';
+import { useFavoritesStore } from '@/entities/Favorites/api/useFavoritesStore';
 import { Typography } from '@/shared/ui/Typography';
 import { ProductCardWidget } from '@/widgets/ProductCardWidget/ui/ProductCardWidget';
 
-export default async function FavoritesPage() {
-  // FIXME: refactor
-  const products = await productService.favorites();
+export default function FavoritesPage() {
+  const likes = useFavoritesStore((state) => state.likes);
+  const likesProducts = products.filter((p) => likes.includes(p.id));
 
   return (
     <main>
@@ -14,7 +17,7 @@ export default async function FavoritesPage() {
         </Typography>
 
         <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4 mt:grid-cols-3 md:grid-cols-4">
-          {products.map((p, index) => (
+          {likesProducts.map((p, index) => (
             <li key={`${p.id}${index}`}>
               <ProductCardWidget isLike={true} product={p} />
             </li>

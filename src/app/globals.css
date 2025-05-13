@@ -38,6 +38,12 @@
   }
 }
 
+@utility no-container {
+  margin-inline: none;
+  padding-inline: 0;
+  max-width: none;
+}
+
 @utility skeleton {
   @apply bg-wild-sand animate-pulse;
 }

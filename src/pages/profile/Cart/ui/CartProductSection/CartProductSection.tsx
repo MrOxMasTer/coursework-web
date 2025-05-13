@@ -1,20 +1,36 @@
+'use client';
+
 import { Typography } from '@/shared/ui/Typography';
 import { CartList } from './CartList';
 import { CartTable } from './CartTable';
-import { productService } from '@/entities/Product/api/productService';
+import { useCartStore } from '@/entities/Cart/api/useCartStore';
+import { products } from '@/entities/Product/model/constants/products';
+import type { CartProduct } from '@/entities/Cart/model/types';
 
-export const CartProductSection = async () => {
-  // TODO: use cart
+export const CartProductSection = () => {
+  const cartItems = useCartStore((state) => state.products);
+  const cartProducts: CartProduct[] = cartItems.map(({ id, count, size }) => {
+    const findProduct = products.find((p) => p.id === id);
 
-  const products = await productService.favorites();
+    if (!findProduct) {
+      throw new Error(`Product ${id} does not exist`);
+    }
+
+    return {
+      product: findProduct,
+      count,
+      size,
+    };
+  });
 
   return (
     <section className="md:grow">
       <Typography variant="h2" className="hidden">
         Cart product
       </Typography>
-      <CartList products={products} />
-      <CartTable products={products} />
+
+      <CartList cartProducts={cartProducts} />
+      <CartTable cartProducts={cartProducts} />
     </section>
   );
 };

@@ -2,9 +2,10 @@
 
 import Heart from '#/public/svg/Heart.svg';
 import HeartFill from '#/public/svg/Heart_fill.svg';
+import { useFavoritesStore } from '@/entities/Favorites/api/useFavoritesStore';
 import type { Product } from '@/entities/Product/model/types';
 import { cn } from '@/shared/lib/utils/classes';
-import { useState, type ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 type ButtonLikeProps = ComponentProps<'button'> & {
   productId: Product['id'];
@@ -17,16 +18,14 @@ export const ButtonLike = ({
   className,
   ...props
 }: ButtonLikeProps) => {
-  const [like, setLike] = useState(isLike);
+  const toggleLike = useFavoritesStore((state) => state.toggleLike);
 
   return (
     <button
       onClick={(e) => {
-        // e.stopPropagation();
+        e.stopPropagation();
 
-        setLike((prev) => !prev);
-
-        console.log(`toggle LIKE product ${productId}`);
+        toggleLike(productId);
       }}
       type="button"
       aria-label="toggle like"
@@ -36,7 +35,7 @@ export const ButtonLike = ({
       )}
       {...props}
     >
-      {like ? (
+      {isLike ? (
         <HeartFill className="translate-y-[1px]" />
       ) : (
         <Heart className="translate-y-[1px]" />

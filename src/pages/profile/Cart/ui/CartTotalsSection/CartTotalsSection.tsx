@@ -1,14 +1,39 @@
 'use client';
 
+import { useCartStore } from '@/entities/Cart/api/useCartStore';
+import type { CartProduct } from '@/entities/Cart/model/types';
+import { products } from '@/entities/Product/model/constants/products';
 import { Action } from '@/shared/ui/Action';
 import { Typography } from '@/shared/ui/Typography';
 
 export const CartTotalsSection = () => {
-  // FIXME:
+  const cartItems = useCartStore((state) => state.products);
+  const cartProducts: CartProduct[] = cartItems.map(({ id, count, size }) => {
+    const findProduct = products.find((p) => p.id === id);
 
-  const subtotal = 1000;
-  const discount = 150;
-  const total = 850;
+    if (!findProduct) {
+      throw new Error(`Product ${id} does not exist`);
+    }
+
+    return {
+      product: findProduct,
+      count,
+      size,
+    };
+  });
+
+  const invoice = cartProducts.reduce(
+    (acc, { product: { price, discountedPrice }, count }) => {
+      acc.subtotal += price * count;
+      acc.discount += discountedPrice ? (price - discountedPrice) * count : 0;
+      acc.total += (discountedPrice ?? price) * count;
+
+      return acc;
+    },
+    { subtotal: 0, discount: 0, total: 0 },
+  );
+
+  const { discount, subtotal, total } = invoice;
 
   return (
     <section className="md:w-[328px]">
