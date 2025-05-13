@@ -11,7 +11,6 @@ type AddToCartProps = {
   productId: Product['id'];
 };
 
-// FIXME:
 export const AddToCart = ({ productId }: AddToCartProps) => {
   const [size] = useQueryState('size', parseAsStringLiteral(literalSizes));
 

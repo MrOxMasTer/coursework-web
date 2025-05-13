@@ -1,12 +1,11 @@
 'use client';
 
-import type { PagePaths } from '@/shared/configs/page';
 import { cn } from '@/shared/lib/utils/classes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 type NavigationMobileItemProps = {
-  href: PagePaths;
+  href: string;
   label: string;
   children: React.ReactNode;
 };

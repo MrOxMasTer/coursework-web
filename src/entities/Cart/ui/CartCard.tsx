@@ -11,8 +11,6 @@ export const CartCard = ({ cartProduct, children }: CartCard) => {
   const { product, size } = cartProduct;
   const { name, price, imageUrl, description } = product;
 
-  // TODO: image
-
   return (
     <div className="flex bg-linear-[144deg] from-0% to-100% from-white to-white shadow-[0_6px_20px_0_rgba(210,_210,_210,_0.25)] justify-between h-[100px] rounded-[14px]">
       <div className="flex justify-start gap-2">

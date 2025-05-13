@@ -10,7 +10,6 @@ import {
 } from '@/shared/ui/shadcnui/Select';
 import { Typography } from '@/shared/ui/Typography';
 
-// TODO:
 export const SortBySelector = () => {
   const [sort, setSort] = useQueryState('sortBy');
 

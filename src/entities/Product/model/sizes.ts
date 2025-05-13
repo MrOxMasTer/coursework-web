@@ -1,10 +1,3 @@
-// FIXME: typing -> as const
-
-// export type Size = {
-//   value: string;
-//   label: string;
-// };
-
 export const sizes = [
   {
     value: 'XS',

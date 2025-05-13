@@ -3,7 +3,6 @@ import { SortByDrawer } from './SortByDrawer';
 import { FilterContent } from '../../FilterContent';
 import { SortBySelector } from './SortBySelector';
 import { CatalogProducts } from './CatalogProducts';
-import { products } from '@/entities/Product/model/constants/products';
 
 type CatalogProps = {};
 

@@ -20,7 +20,7 @@ export const SizeChips = () => {
           <li key={value}>
             <Chip
               onClick={handleClick(value)}
-              className="px-3 py-1 text-sm am:text-base"
+              className="px-3 py-1 text-sm am:text-base cursor-pointer"
               variant={size === value ? 'active' : 'base'}
             >
               {label}

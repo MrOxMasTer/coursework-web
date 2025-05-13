@@ -1,24 +1,9 @@
 import type { Size } from '@/entities/Product/model/sizes';
 import { useEffect, useState } from 'react';
-import type { literalSortBy } from '../model/sortBy';
 import { products as initialData } from '@/entities/Product/model/constants/products';
+import type { CatalogProductsOptions } from '../model/types';
 
-export type CatalogProductsOptions = {
-  q?: string | null;
-  tab?: string;
-  sortBy?: (typeof literalSortBy)[number] | null;
-  start?: number | null;
-  end?: number | null;
-  category?: string | null;
-  size?: string | null;
-  pageSize?: number;
-  cursor?: number;
-};
-
-export const useCatalogProducts = (
-  // initialData: Product[],
-  options: CatalogProductsOptions,
-) => {
+export const useCatalogProducts = (options: CatalogProductsOptions) => {
   const [products, setProducts] = useState(initialData);
 
   useEffect(() => {

@@ -32,7 +32,6 @@ export const Typography = memo(
   },
 );
 
-// FIXME: https://github.com/joe-bell/cva/discussions/302
 export const typographyVariants = cva({
   base: 'text-black',
   variants: {
