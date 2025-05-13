@@ -36,13 +36,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main>
       <div className="md:container">
         <div className="md:flex md:gap-14 md:mt-20">
-          <div className="relative md:size-[444px]">
+          <div className="relative md:shrink-0">
             <ButtonLike
               className="top-7 right-7 size-9"
               productId={id}
               isLike
             />
-            <div className="bg-linear-[135deg] from-0% from-wild-sand to-100% to-alabaster min-h-[350px] flex justify-center items-center">
+            <div className="bg-linear-[135deg] from-0% from-wild-sand to-100% to-alabaster min-h-[350px] flex justify-center items-center md:shrink-0 md:size-[444px]">
               <Image width={400} height={400} src={`/${imageUrl}`} alt={name} />
             </div>
           </div>

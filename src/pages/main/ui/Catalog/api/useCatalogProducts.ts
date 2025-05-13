@@ -1,7 +1,7 @@
 import type { Size } from '@/entities/Product/model/sizes';
-import type { Product } from '@/entities/Product/model/types';
 import { useEffect, useState } from 'react';
 import type { literalSortBy } from '../model/sortBy';
+import { products as initialData } from '@/entities/Product/model/constants/products';
 
 export type CatalogProductsOptions = {
   q?: string | null;
@@ -16,7 +16,7 @@ export type CatalogProductsOptions = {
 };
 
 export const useCatalogProducts = (
-  initialData: Product[],
+  // initialData: Product[],
   options: CatalogProductsOptions,
 ) => {
   const [products, setProducts] = useState(initialData);
@@ -90,7 +90,7 @@ export const useCatalogProducts = (
     }
 
     setProducts(newProducts);
-  }, [initialData, options]);
+  }, [options]);
 
   return products;
 };

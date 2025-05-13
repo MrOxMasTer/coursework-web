@@ -24,7 +24,7 @@ export const Catalog = () => {
               <SortByDrawer />
               <SortBySelector />
             </div>
-            <CatalogProducts initialData={products} />
+            <CatalogProducts />
           </div>
         </div>
       </div>

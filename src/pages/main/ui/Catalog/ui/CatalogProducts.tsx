@@ -1,6 +1,5 @@
 'use client';
 
-import type { Product } from '@/entities/Product/model/types';
 import {
   useQueryStates,
   parseAsString,
@@ -8,7 +7,6 @@ import {
   parseAsInteger,
 } from 'nuqs';
 import { literalTabs } from '../model/tabs';
-import { useMediaQuery } from '@/shared/hooks/useMediaQuery';
 import { ProductCardWidget } from '@/widgets/ProductCardWidget/ui/ProductCardWidget';
 import { literalSortBy } from '../model/sortBy';
 import { literalCategories } from '@/entities/Product/model/categories';
@@ -16,23 +14,9 @@ import { literalSizes } from '@/entities/Product/model/sizes';
 import { useCatalogProducts } from '../api/useCatalogProducts';
 import { useFavoritesStore } from '@/entities/Favorites/api/useFavoritesStore';
 
-type CatalogProductsProps = {
-  initialData: Product[];
-};
+type CatalogProductsProps = {};
 
-const mediaQuery = '(width < 768px)';
-
-const pageSizeOfMobile = 8;
-const pageSizeOfTabletAndDesktop = 9;
-
-export const CatalogProducts = ({ initialData }: CatalogProductsProps) => {
-  const isMobile = useMediaQuery(mediaQuery); // true
-
-  const pageSize = isMobile ? pageSizeOfMobile : pageSizeOfTabletAndDesktop;
-  const finalProducts = (
-    isMobile ? initialData.slice(0, pageSize) : initialData
-  ) as Product[];
-
+export const CatalogProducts = () => {
   const [options] = useQueryStates({
     tab: parseAsStringLiteral(literalTabs).withDefault('all'),
     q: parseAsString,
@@ -43,7 +27,7 @@ export const CatalogProducts = ({ initialData }: CatalogProductsProps) => {
     end: parseAsInteger,
   });
 
-  const products = useCatalogProducts(finalProducts, options);
+  const products = useCatalogProducts(options);
   const likes = useFavoritesStore((state) => state.likes);
 
   return (

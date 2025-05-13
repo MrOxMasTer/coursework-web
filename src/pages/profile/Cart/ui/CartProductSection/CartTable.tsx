@@ -34,7 +34,7 @@ export const CartTable = ({ cartProducts }: CartTableProps) => {
           <TableHead className="text-center">Action</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody className="">
+      <TableBody>
         {cartProducts.map(
           ({
             product: {
