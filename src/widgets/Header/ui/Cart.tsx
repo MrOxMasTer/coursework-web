@@ -11,9 +11,11 @@ export const Cart = () => {
 
   return (
     <Link className="relative" href={pageConfig.cart}>
-      <div className="size-4 border-2 absolute top-0 right-[-5px] border-solid bg-green text-white rounded-full border-white flex items-center justify-center text-[0.625rem]">
-        {productInCartCount}
-      </div>
+      {productInCartCount !== 0 ? (
+        <div className="size-4 border-2 absolute top-0 right-[-5px] border-solid bg-green text-white rounded-full border-white flex items-center justify-center text-[0.625rem]">
+          {productInCartCount}
+        </div>
+      ) : null}
       <CartSvg />
     </Link>
   );

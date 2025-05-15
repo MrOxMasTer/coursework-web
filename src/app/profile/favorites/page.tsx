@@ -16,13 +16,19 @@ export default function FavoritesPage() {
           Favorites
         </Typography>
 
-        <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4 mt:grid-cols-3 md:grid-cols-4">
-          {likesProducts.map((p, index) => (
-            <li key={`${p.id}${index}`}>
-              <ProductCardWidget isLike={true} product={p} />
-            </li>
-          ))}
-        </ul>
+        {likesProducts.length !== 0 ? (
+          <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4 mt:grid-cols-3 md:grid-cols-4">
+            {likesProducts.map((p, index) => (
+              <li key={`${p.id}${index}`}>
+                <ProductCardWidget isLike={true} product={p} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Typography className="font-medium text-center text-3xl mt-10 md:mt-24">
+            empty
+          </Typography>
+        )}
       </div>
     </main>
   );
